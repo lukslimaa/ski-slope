@@ -11,4 +11,7 @@ public @Data class SkierQueue implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer leftSingle;
+	private Integer rightSingle;
+	private Integer leftTriple;
+	private Integer rightTriple;
 }

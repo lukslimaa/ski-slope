@@ -1,5 +1,6 @@
 package com.lks.SkiSlope;
 
+import com.lks.service.AddToQueue;
 import com.lks.thread.CreateNewSkier;
 
 /**
@@ -10,7 +11,12 @@ public class App
 {
     public static void main( String[] args )
     {
-        (new Thread(new CreateNewSkier())).start();
+    	
+    	AddToQueue addToQueue = new AddToQueue();
+    	
+    	for(int i = 0; i <= 5; i++){
+    		new CreateNewSkier("Lucas" + i, addToQueue);
+    	}
         
     }
 }
