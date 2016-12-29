@@ -1,29 +1,22 @@
 package com.lks.thread;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.lks.service.AddToQueue;
 
-public class CreateNewSkier implements Runnable {
+public class NewSkier extends Thread {
 	
 	AddToQueue addToQueue;
-	
-	Thread t;
 	private final String skier;
 	
-	public CreateNewSkier(String skierName, AddToQueue addToQueue) {
+	public NewSkier(String skierName, AddToQueue addToQueue) {
 
-		skier = skierName;
+		this.skier = skierName;
 		this.addToQueue = addToQueue;
-		t = new Thread(this, skier);
-		t.start();
-		
+		//setDaemon(true);
 	}
 	
 	public void run() {
 		
 		try {
-			
 			addToQueue.addSkierToQueue(skier);
 			Thread.sleep(1000);
 			

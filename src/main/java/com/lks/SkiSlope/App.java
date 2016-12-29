@@ -1,7 +1,7 @@
 package com.lks.SkiSlope;
 
 import com.lks.service.AddToQueue;
-import com.lks.thread.CreateNewSkier;
+import com.lks.thread.NewSkier;
 
 /**
  * Hello world!
@@ -14,8 +14,8 @@ public class App
     	
     	AddToQueue addToQueue = new AddToQueue();
     	
-    	for(int i = 0; i <= 5; i++){
-    		new CreateNewSkier("Lucas" + i, addToQueue);
+    	for(int i = 0; i <= 100; i++){
+    		new NewSkier("Lucas" + i, addToQueue).start();
     	}
         
     }
