@@ -1,7 +1,9 @@
 package com.lks.SkiSlope;
 
-import com.lks.service.AddToQueue;
+import com.lks.domain.SkierQueue;
+import com.lks.service.SkiLiftQueue;
 import com.lks.thread.NewSkier;
+import com.lks.thread.SkiLift;
 
 /**
  * Hello world!
@@ -9,14 +11,16 @@ import com.lks.thread.NewSkier;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws InterruptedException
     {
     	
-    	AddToQueue addToQueue = new AddToQueue();
-    	
-    	for(int i = 0; i <= 100; i++){
+    	SkiLiftQueue addToQueue = new SkiLiftQueue();
+
+    	for(int i = 0; i <= 15; i++){
     		new NewSkier("Lucas" + i, addToQueue).start();
     	}
+    	
+    	new SkiLift(addToQueue).start();
         
     }
 }

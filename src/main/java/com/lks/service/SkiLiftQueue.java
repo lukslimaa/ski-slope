@@ -5,8 +5,10 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 import org.springframework.stereotype.Service;
 
+import com.lks.domain.SkierQueue;
+
 @Service
-public class AddToQueue {
+public class SkiLiftQueue {
 	
 	/* Defining all queues we're gonna use further. */
 	private Queue<String> leftSingle = new ArrayBlockingQueue<String>(20);
@@ -44,10 +46,20 @@ public class AddToQueue {
 		}
 		
 		else {
+			
 			rightTriple.add(skier);
 			System.out.println("Skier " + skier + " added to Right-Triple queue!");
 			return;
+			
 		}
+		
+	}
+	
+	public synchronized void addSkierToSkiLift() {
+		
+		String removed = rightSingle.remove();
+		System.out.println("Skier " + removed + " was added to the ski lift!");
+		System.out.println("LS:" + leftSingle.size() + " LT:" + leftTriple.size() + " RT:" + rightTriple.size() + " RS:" + rightSingle.size());
 		
 	}
 

@@ -1,24 +1,24 @@
 package com.lks.thread;
 
-import com.lks.service.AddToQueue;
+import com.lks.service.SkiLiftQueue;
 
 public class NewSkier extends Thread {
 	
-	AddToQueue addToQueue;
+	SkiLiftQueue addToQueue;
 	private final String skier;
 	
-	public NewSkier(String skierName, AddToQueue addToQueue) {
+	public NewSkier(String skierName, SkiLiftQueue addToQueue) throws InterruptedException {
 
 		this.skier = skierName;
 		this.addToQueue = addToQueue;
-		//setDaemon(true);
+		sleep(1000);
 	}
 	
 	public void run() {
 		
 		try {
+			
 			addToQueue.addSkierToQueue(skier);
-			Thread.sleep(1000);
 			
 		} catch (Exception ex) {
 			
