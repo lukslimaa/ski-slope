@@ -1,9 +1,8 @@
 package com.lks.SkiSlope;
 
-import com.lks.domain.SkierQueue;
 import com.lks.service.SkiLiftQueue;
-import com.lks.thread.NewSkier;
 import com.lks.thread.SkiLift;
+import com.lks.thread.SkierGeneratorThread;
 
 /**
  * Hello world!
@@ -14,13 +13,10 @@ public class App
     public static void main( String[] args ) throws InterruptedException
     {
     	
-    	SkiLiftQueue addToQueue = new SkiLiftQueue();
-
-    	for(int i = 0; i <= 15; i++){
-    		new NewSkier("Lucas" + i, addToQueue).start();
-    	}
+    	SkiLiftQueue slq = new SkiLiftQueue();
     	
-    	new SkiLift(addToQueue).start();
-        
+    	new SkierGeneratorThread(slq).start();
+    	new SkiLift(slq).start();
+
     }
 }

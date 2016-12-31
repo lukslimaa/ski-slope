@@ -1,11 +1,10 @@
 package com.lks.service;
 
 import java.util.Queue;
+import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 
 import org.springframework.stereotype.Service;
-
-import com.lks.domain.SkierQueue;
 
 @Service
 public class SkiLiftQueue {
@@ -57,9 +56,42 @@ public class SkiLiftQueue {
 	
 	public synchronized void addSkierToSkiLift() {
 		
-		String removed = rightSingle.remove();
-		System.out.println("Skier " + removed + " was added to the ski lift!");
-		System.out.println("LS:" + leftSingle.size() + " LT:" + leftTriple.size() + " RT:" + rightTriple.size() + " RS:" + rightSingle.size());
+		if(leftTriple.size() >= 3 || rightTriple.size() >= 3) {
+			
+			if(leftTriple.size() >=3 && rightTriple.size() >= 3) {
+				
+				Random Dice = new Random(); 
+				int n = Dice.nextInt(2);
+				int count = 0;
+				
+				switch (n) {
+				case 1:
+					
+					while(count < 3) {
+						
+						System.out.println(">>>>> The skier ("+ leftTriple.remove() +") was .");
+						count++;
+					}
+					
+					break;
+
+				case 2:
+					
+					while(count < 3) {
+						
+						System.out.println(">>>>> The skier ("+ rightTriple.remove() +") was .");
+						count++;
+						
+					}
+					
+					break;
+					
+				}
+			}
+			
+		} else {
+			
+		}
 		
 	}
 
