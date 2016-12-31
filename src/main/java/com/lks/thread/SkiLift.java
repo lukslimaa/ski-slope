@@ -13,7 +13,10 @@ public class SkiLift extends Thread {
 	
 	public void run() {
 		try {
-			addToChair.addSkierToSkiLift();
+			
+			while(true) {
+				addToChair.addSkierToSkiLift();
+			}
 		} catch(Exception ex) {
 			System.out.println("Something went wrong: " + ex);
 		}
