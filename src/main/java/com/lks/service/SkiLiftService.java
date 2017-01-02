@@ -16,11 +16,10 @@ public class SkiLiftService {
 				rsSize = 0,
 				rtSize = 0;
 	
-	private int sTurn  = 0;
+	private final int SIZE = 20;
+	private int count  = 0;
 	
 	public synchronized void addSkierToSkiLiftChair(SkierQueue sq) {
-		
-		int count  = 0;
 		
 		/* getting the queue size */
 		lsSize = sq.leftSingle.size();
@@ -51,21 +50,19 @@ public class SkiLiftService {
 		
 		if(sq.leftTriple.size() >= 3 && sq.rightTriple.size() >=3) {
 			
-			Random rn = new Random();
-			int sTurn = rn.nextInt(2);
-			
 			/* taking 3 skiers off from triple queue*/
-			if(sTurn == 0) {	
+			if(count == 0) {	
 				while(sq.liftChair.size() < 3) {
 					System.out.println(">>>> Skier " + RemoveFromQueue.removeSkier(sq, "lt") + " added to the chair!");
 				}
-				
+				count++;
 			} 
 			
 			else {
 				while(sq.liftChair.size() < 3) {
 					System.out.println(">>>> Skier " + RemoveFromQueue.removeSkier(sq, "rt") + " added to the chair!");
 				}
+				count--;
 			}
 			
 			takeSuplementerSkier(sq);
@@ -94,17 +91,16 @@ public class SkiLiftService {
 	
 	public synchronized void takeSkierFromSingleQueues(SkierQueue sq) {
 		
-		Random rn = new Random();
-		int sTurn = rn.nextInt(2);
-		
 		if(sq.leftSingle.size() >= 4 && sq.rightSingle.size() >= 4) {
 			
 			while(sq.liftChair.size() < 4) {
 				
-				if(sTurn == 0) {
+				if(count == 0) {
 					System.out.println(">>>> Skier " + RemoveFromQueue.removeSkier(sq, "ls") + " added to the chair!");
+					count++;
 				} else {
 					System.out.println(">>>> Skier " + RemoveFromQueue.removeSkier(sq, "rs") + " added to the chair!");
+					count--;
 				}
 			}
 			
@@ -122,15 +118,14 @@ public class SkiLiftService {
 	
 	public synchronized void takeSuplementerSkier(SkierQueue sq) {
 		
-		Random rn = new Random();
-		int sTurn = rn.nextInt(2);
-		
 		if(sq.leftSingle.size() >=1 && sq.rightSingle.size() >= 1) {
 			
-			if(sTurn == 0) {
+			if(count == 0) {
 				System.out.println(">>>> Skier " + RemoveFromQueue.removeSkier(sq, "ls") + " added to the chair!");
+				count++;
 			} else {
 				System.out.println(">>>> Skier " + RemoveFromQueue.removeSkier(sq, "rs") + " added to the chair!");
+				count--;
 			}
 			
 		} else if(sq.leftSingle.size() >= 1) {
@@ -139,7 +134,6 @@ public class SkiLiftService {
 			System.out.println(">>>> Skier " + RemoveFromQueue.removeSkier(sq, "rs") + " added to the chair!");
 		}
 		
-	}
-	
+	}	
 
 }
