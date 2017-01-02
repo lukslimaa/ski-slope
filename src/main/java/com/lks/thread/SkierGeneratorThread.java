@@ -1,13 +1,16 @@
 package com.lks.thread;
 
+import com.lks.domain.SkierQueue;
 import com.lks.service.SkiLiftQueue;
 
 public class SkierGeneratorThread extends Thread {
 	
 	SkiLiftQueue skiLiftQueue;
+	SkierQueue skierQueue;
 	
-	public SkierGeneratorThread(SkiLiftQueue slq) {
+	public SkierGeneratorThread(SkiLiftQueue slq, SkierQueue sq) {
 		this.skiLiftQueue = slq;
+		this.skierQueue = sq;
 	}
 	
 	public void run() {
@@ -15,7 +18,7 @@ public class SkierGeneratorThread extends Thread {
 		try {
 			
 			for(int i = 0; i <= 120; i++){
-	    		new NewSkier("Lucas" + i, skiLiftQueue).start();
+	    		new NewSkier("Lucas" + i, skiLiftQueue, skierQueue).start();
 	    	}
 			
 		} catch (Exception e) {
