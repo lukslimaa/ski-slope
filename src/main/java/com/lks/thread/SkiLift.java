@@ -12,7 +12,6 @@ public class SkiLift extends Thread {
 	public SkiLift(SkiLiftService sls, SkierQueue sq) throws InterruptedException {
 		this.skiLiftService = sls;
 		this.skierQueue = sq;
-		sleep(4000);
 	}
 	
 	public void run() {
@@ -20,8 +19,8 @@ public class SkiLift extends Thread {
 		try {
 			
 			while(true) {
-				skiLiftService.addSkierToSkiLiftChair(skierQueue);
 				sleep(4000);
+				skiLiftService.addSkierToSkiLiftChair(skierQueue);
 			}
 			
 		} catch(Exception ex) {
