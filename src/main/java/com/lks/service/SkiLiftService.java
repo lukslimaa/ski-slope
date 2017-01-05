@@ -1,11 +1,5 @@
 package com.lks.service;
 
-import java.util.ArrayList;
-import java.util.Random;
-
-import javax.ejb.Remove;
-
-import com.lks.domain.Skier;
 import com.lks.domain.SkierQueue;
 import com.lks.utils.RemoveFromQueue;
 

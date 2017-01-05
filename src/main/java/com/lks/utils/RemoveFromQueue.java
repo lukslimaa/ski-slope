@@ -1,13 +1,12 @@
 package com.lks.utils;
 
-import java.util.ArrayList;
 
 import com.lks.domain.SkierQueue;
 
 public class RemoveFromQueue {
 	
 	private static String skier = "";
-	private final int SIZE = 20;
+
 	
 	public static String removeSkier(SkierQueue sq, String queue) throws InterruptedException {
 		
