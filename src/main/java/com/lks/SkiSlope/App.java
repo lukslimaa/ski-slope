@@ -4,7 +4,7 @@ import com.lks.domain.SkierQueue;
 import com.lks.service.SkiLiftQueueService;
 import com.lks.service.SkiLiftService;
 import com.lks.service.TakeUpRateService;
-import com.lks.thread.SkiLift;
+import com.lks.thread.SkiLiftThread;
 import com.lks.thread.SkierGeneratorThread;
 
 /**
@@ -22,7 +22,7 @@ public class App
     	SkierQueue sq = new SkierQueue();
     	
     	new SkierGeneratorThread(slq, sq).start();
-    	new SkiLift(sls, sq, tu).start();
+    	new SkiLiftThread(sls, sq, tu).start();
 
     }
 }

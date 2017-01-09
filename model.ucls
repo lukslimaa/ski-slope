@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="com.lks.domain.SkierQueue" project="SkiSlope" 
     file="/SkiSlope/src/main/java/com/lks/domain/SkierQueue.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="567" y="221"/>    
+    <position height="-1" width="-1" x="567" y="295"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,15 +21,15 @@
   </class>  
   <class id="3" language="java" name="com.lks.thread.SkierGeneratorThread" project="SkiSlope" 
     file="/SkiSlope/src/main/java/com/lks/thread/SkierGeneratorThread.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="575" y="459"/>    
+    <position height="-1" width="-1" x="563" y="587"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="com.lks.thread.NewSkier" project="SkiSlope" 
-    file="/SkiSlope/src/main/java/com/lks/thread/NewSkier.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="com.lks.thread.NewSkierThread" project="SkiSlope" 
+    file="/SkiSlope/src/main/java/com/lks/thread/NewSkierThread.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="162" y="465"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="com.lks.thread.SkiLift" project="SkiSlope" 
-    file="/SkiSlope/src/main/java/com/lks/thread/SkiLift.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="com.lks.thread.SkiLiftThread" project="SkiSlope" 
+    file="/SkiSlope/src/main/java/com/lks/thread/SkiLiftThread.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="940" y="470"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -74,72 +74,72 @@
     </display>  
   </class>  
   <association id="9">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="10" name="skiLiftQueue">        
-        <position height="0" width="0" x="0" y="0"/>      
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="10" name="skierQueue">        
+        <position height="0" width="0" x="0" y="74"/>      
       </attribute>      
       <multiplicity id="11" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="0" y="74"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="12">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="13" name="skiLiftService">        
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="13" name="skiLiftQueue">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="14" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="15">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="16" name="skierQueue">        
+      <attribute id="16" name="skiLiftService">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="17" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="18">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="19" name="skiLiftQueue">        
-        <position height="0" width="0" x="0" y="0"/>      
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="19" name="skierQueue">        
+        <position height="0" width="0" x="0" y="74"/>      
       </attribute>      
       <multiplicity id="20" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="0" y="74"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="21">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="22" name="skierQueue">        
+      <attribute id="22" name="skiLiftQueue">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="23" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="24">    
     <end type="SOURCE" refId="3" navigable="false">      
       <attribute id="25" name="skierQueue">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="0" y="74"/>      
       </attribute>      
       <multiplicity id="26" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="0" y="74"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    

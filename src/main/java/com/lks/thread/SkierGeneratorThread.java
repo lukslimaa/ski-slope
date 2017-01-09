@@ -18,7 +18,7 @@ public class SkierGeneratorThread extends Thread {
 		try {
 			
 			for(int i = 0; i <= 120; i++){
-	    		new NewSkier("Lucas" + i, skiLiftQueue, skierQueue).start();
+	    		new NewSkierThread("Lucas" + i, skiLiftQueue, skierQueue).start();
 	    	}
 			
 		} catch (Exception e) {

@@ -24,6 +24,11 @@ public class SkiLiftService {
 		
 		if(count == 0) {count++;}else{count--;}
 		
+		System.out.println("\n--------------=== [ LS:" + sq.leftSingle.size() +
+				" LT:" + sq.leftTriple.size() +
+				" RS:" + sq.rightSingle.size() +
+				" RT:" + sq.rightTriple.size() + " ]===--------------\n");
+		
 		
 		if(ltSize >= 3 || rtSize >=3) {
 			
@@ -115,8 +120,10 @@ public class SkiLiftService {
 				
 				if(count == 0) {
 					System.out.println(">>>> Skier " + RemoveFromQueue.removeSkier(sq, "ls") + " added to the chair!");
+					count++;
 				} else {
 					System.out.println(">>>> Skier " + RemoveFromQueue.removeSkier(sq, "rs") + " added to the chair!");
+					count--;
 				}
 			}
 			

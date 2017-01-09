@@ -31,6 +31,7 @@ public void addSkierToQueue(String skier, SkierQueue sq) throws InterruptedExcep
 			
 			synchronized(sq.leftSingle) {
 				sq.leftSingle.add(skier);
+				sq.leftSingle.notifyAll();
 				sq.skiersMap.put(skier, System.nanoTime());
 				System.out.println("Skier " + skier + " added to Left-Single queue!");
 				return;
@@ -51,6 +52,7 @@ public void addSkierToQueue(String skier, SkierQueue sq) throws InterruptedExcep
 			
 			synchronized(sq.rightSingle) {
 				sq.rightSingle.add(skier);
+				sq.rightSingle.notifyAll();
 				sq.skiersMap.put(skier, System.nanoTime());
 				System.out.println("Skier " + skier + " added to Right-Single queue!");
 				return;
@@ -68,6 +70,7 @@ public void addSkierToQueue(String skier, SkierQueue sq) throws InterruptedExcep
 			
 			synchronized(sq.leftTriple) {
 				sq.leftTriple.add(skier);
+				sq.leftTriple.notifyAll();
 				sq.skiersMap.put(skier, System.nanoTime());
 				System.out.println("Skier " + skier + " added to Left-Triple queue!");
 				return;
@@ -85,6 +88,7 @@ public void addSkierToQueue(String skier, SkierQueue sq) throws InterruptedExcep
 			
 			synchronized(sq.rightTriple) {
 				sq.rightTriple.add(skier);
+				sq.rightTriple.notifyAll();
 				sq.skiersMap.put(skier, System.nanoTime());
 				System.out.println("Skier " + skier + " added to Right-Triple queue!");
 				return;
