@@ -11,7 +11,7 @@ public class SkiLiftService {
 				rtSize = 0,
 				count = 0;
 	
-	public void addSkierToSkiLiftChair(SkierQueue sq) throws InterruptedException {
+	public void addSkierToSkiLiftChair(SkierQueue sq, TakeUpRateService tu) throws InterruptedException {
 		
 		/* getting the queue size */
 		lsSize = sq.leftSingle.size();
@@ -26,23 +26,39 @@ public class SkiLiftService {
 		
 		
 		if(ltSize >= 3 || rtSize >=3) {
-			System.out.println("=-------------------------------- Ski Lift Service Starting (triple) --------------------------------=");
+			
+			System.out.println("\n=-------------------------------- Ski Lift Service Starting (triple) --------------------------------=");
 			takeSkierFromTripleQueues(sq);
-			System.out.println("=-------------------------------- Ski Lift Service Finishing --------------------------------=");
+			System.out.println("=-------------------------------- Ski Lift Service Finishing --------------------------------=\n");
+			
+			tu.getTakeUpRate(sq.liftChair.size());
 		} 
 		
 		/* case LT and RT are empty*/
 		else if(lsSize >= 4 || rsSize >= 4) {
-			System.out.println("=-------------------------------- Ski Lift Service Starting (single) --------------------------------=");
+			
+			System.out.println("\n=-------------------------------- Ski Lift Service Starting (single) --------------------------------=");
 			takeSkierFromSingleQueues(sq);
-			System.out.println("=-------------------------------- Ski Lift Service Finishing --------------------------------=");
+			System.out.println("=-------------------------------- Ski Lift Service Finishing --------------------------------=\n");
+			
+			tu.getTakeUpRate(sq.liftChair.size());
 		}
 		
-		System.out.println("------=== [ LS:" + sq.leftSingle.size() +
+		System.out.println("\n--------------=== [ LS:" + sq.leftSingle.size() +
 				" LT:" + sq.leftTriple.size() +
 				" RS:" + sq.rightSingle.size() +
-				" RT:" + sq.rightTriple.size()+ " ]===------");
+				" RT:" + sq.rightTriple.size() + " ]===--------------\n");
 		
+		
+		System.out.println("\n--------------=== [ Tempo Medio Espera: " +
+						   " LS: " + sq.getLSWaitTimeAverage() +
+						   " LT: " + sq.getLTWaitTimeAverage() +
+						   " RS: " + sq.getRSWaitTimeAverage() +
+						   " RT: " + sq.getRTWaitTimeAverage() +
+						   " GERAL: " + (sq.getLSWaitTimeAverage() + sq.getLTWaitTimeAverage() + sq.getRSWaitTimeAverage() + sq.getRTWaitTimeAverage())/4 +
+						   " ]===--------------\n"
+				
+				);
 
 	}
 	
@@ -52,6 +68,7 @@ public class SkiLiftService {
 			
 			/* taking 3 skiers off from triple queue*/
 			if(count == 0) {	
+				
 				while(sq.liftChair.size() < 3) {
 					System.out.println(">>>> Skier " + RemoveFromQueue.removeSkier(sq, "lt") + " added to the chair!");
 				}
@@ -59,9 +76,11 @@ public class SkiLiftService {
 			} 
 			
 			else {
+				
 				while(sq.liftChair.size() < 3) {
 					System.out.println(">>>> Skier " + RemoveFromQueue.removeSkier(sq, "rt") + " added to the chair!");
 				}
+				
 			}
 			
 			takeSuplementerSkier(sq);

@@ -1,14 +1,14 @@
 package com.lks.thread;
 
 import com.lks.domain.SkierQueue;
-import com.lks.service.SkiLiftQueue;
+import com.lks.service.SkiLiftQueueService;
 
 public class SkierGeneratorThread extends Thread {
 	
-	SkiLiftQueue skiLiftQueue;
+	SkiLiftQueueService skiLiftQueue;
 	SkierQueue skierQueue;
 	
-	public SkierGeneratorThread(SkiLiftQueue slq, SkierQueue sq) {
+	public SkierGeneratorThread(SkiLiftQueueService slq, SkierQueue sq) {
 		this.skiLiftQueue = slq;
 		this.skierQueue = sq;
 	}

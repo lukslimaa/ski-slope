@@ -1,26 +1,20 @@
 package com.lks.service;
 
-import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
+
+import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
 import com.lks.domain.SkierQueue;
 
 @Service
-public class SkiLiftQueue {
+public class SkiLiftQueueService {
 	
 	private final int SIZE = 20;
 	
 	
-	public void addSkierToQueue(String skier, SkierQueue sq) throws InterruptedException {
-		
-		System.out.println("queues: LS:" + sq.leftSingle.size() +
-				" LT:" + sq.leftTriple.size() +
-				" RS:" + sq.rightSingle.size() +
-				" RT:" + sq.rightTriple.size());
-		
-		
+	
+public void addSkierToQueue(String skier, SkierQueue sq) throws InterruptedException {
 		
 		
 		/* -------- Adding skier to the Left-Single queue -------- */
@@ -37,6 +31,7 @@ public class SkiLiftQueue {
 			
 			synchronized(sq.leftSingle) {
 				sq.leftSingle.add(skier);
+				sq.skiersMap.put(skier, System.nanoTime());
 				System.out.println("Skier " + skier + " added to Left-Single queue!");
 				return;
 			}
@@ -56,6 +51,7 @@ public class SkiLiftQueue {
 			
 			synchronized(sq.rightSingle) {
 				sq.rightSingle.add(skier);
+				sq.skiersMap.put(skier, System.nanoTime());
 				System.out.println("Skier " + skier + " added to Right-Single queue!");
 				return;
 			}
@@ -72,6 +68,7 @@ public class SkiLiftQueue {
 			
 			synchronized(sq.leftTriple) {
 				sq.leftTriple.add(skier);
+				sq.skiersMap.put(skier, System.nanoTime());
 				System.out.println("Skier " + skier + " added to Left-Triple queue!");
 				return;
 			}
@@ -88,6 +85,7 @@ public class SkiLiftQueue {
 			
 			synchronized(sq.rightTriple) {
 				sq.rightTriple.add(skier);
+				sq.skiersMap.put(skier, System.nanoTime());
 				System.out.println("Skier " + skier + " added to Right-Triple queue!");
 				return;
 			}

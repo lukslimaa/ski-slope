@@ -2,16 +2,19 @@ package com.lks.thread;
 
 import com.lks.domain.SkierQueue;
 import com.lks.service.SkiLiftService;
+import com.lks.service.TakeUpRateService;
 
 public class SkiLift extends Thread {
 	
 	Thread runner;
 	SkiLiftService skiLiftService;
 	SkierQueue skierQueue;
+	TakeUpRateService takeUp;
 	
-	public SkiLift(SkiLiftService sls, SkierQueue sq) throws InterruptedException {
+	public SkiLift(SkiLiftService sls, SkierQueue sq, TakeUpRateService tu) throws InterruptedException {
 		this.skiLiftService = sls;
 		this.skierQueue = sq;
+		this.takeUp = tu;
 	}
 	
 	public void run() {
@@ -20,7 +23,7 @@ public class SkiLift extends Thread {
 			
 			while(true) {
 				sleep(4000);
-				skiLiftService.addSkierToSkiLiftChair(skierQueue);
+				skiLiftService.addSkierToSkiLiftChair(skierQueue, takeUp);
 			}
 			
 		} catch(Exception ex) {
